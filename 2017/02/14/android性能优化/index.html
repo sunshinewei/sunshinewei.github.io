@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="叫我阿龙">
 <meta property="og:description" content="对于android开发人员来说，随着应用的功能越来越复杂，布局越来越丰富，对于性能优化是创建高质量的与应用程序的基础。
 布局优化1.避免过度重绘：过度绘制会浪费很多CPU,GPU资源。android系统给我们提供了一种这样的检测工具，在开发者选项中的GPU overdraw。对于我们开发人员来说，尽量增大蓝色区域，减少红色区域。2.优化布局层次：在android中，系统对View绘制时，通过Vie">
-<meta property="og:updated_time" content="2017-02-16T02:29:16.000Z">
+<meta property="og:updated_time" content="2017-02-17T03:32:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android性能优化">
 <meta name="twitter:description" content="对于android开发人员来说，随着应用的功能越来越复杂，布局越来越丰富，对于性能优化是创建高质量的与应用程序的基础。
@@ -400,8 +400,8 @@
 <h5 id="布局优化"><a href="#布局优化" class="headerlink" title="布局优化"></a>布局优化</h5><p>1.避免过度重绘：过度绘制会浪费很多CPU,GPU资源。android系统给我们提供了一种这样的检测工具，在开发者选项中的GPU overdraw。对于我们开发人员来说，尽量增大蓝色区域，减少红色区域。<br>2.优化布局层次：在android中，系统对View绘制时，通过View树遍历进行，如果view树的高度太高，影响测量和绘制的速度。因此降低view树的高度，优化布局。<br>3.使用<code>include</code>标签重用Layout:android在布局搭建时，很多界面都会存在一些公用的UI，为了减少代码的冗余，可以使用<include>标签来定义一个公用的UI。<br>公用UI:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">              android:orientation=&quot;vertical&quot;</div><div class="line">              android:layout_width=&quot;match_parent&quot;</div><div class="line">              android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">    &lt;Toolbar</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;&gt;</div><div class="line">        &lt;TextView</div><div class="line">            android:layout_width=&quot;match_parent&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:text=&quot;首页&quot;</div><div class="line">            android:gravity=&quot;center&quot;</div><div class="line">            android:background=&quot;@color/colorAccent&quot;/&gt;</div><div class="line">    &lt;/Toolbar&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></include></p>
 <p>include引入公用布局：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;include layout=&quot;@layout/toolbar&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_width=&quot;match_parent&quot;/&gt;</div></pre></td></tr></table></figure></p>
 <p>4.使用ViewStub实现View的延迟加载：使用跟include一样，但显示view分为两种：1. VISIBLE:通过调用<code>setVisibility()</code>渲染。2. inflate:通过调用<code>inflate()</code>显示这个view。这两种方式都可显示view,而不同点是第二中可以通过<code>findViewById()</code>里面的控件。<br>5.使用Hierarchy Viewer工：android官方提供的工具，在sdk的tools中即可找到，可以知道每个view所绘制的时长和view树深度。</p>
-<h5 id="内存优化："><a href="#内存优化：" class="headerlink" title="内存优化："></a>内存优化：</h5><p>1.静态变量导致的内存泄漏：在一个Activity中应用了静态变量，当这个Activity销毁时，这个变量变量无法销毁。（这种模式一般不会发生，一般都会避免使用）<br>2.单例模式导致的内存泄漏：由于单利模式的特点是其生命周期和Application的保持一致，因此Activity对象无法及时释放。<br>3.属性动画导致的内存泄漏：属性动画有一类有一类无限循环动画，如果在onDestroy()中没有停止的话，那么动画会一直播下去，尽管界面没有展现动画效果，而这个时候Activity的View持有这个动画，而View又持有Activity，最终Activity无法释放。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">		mTvShow= (TextView) findViewById(R.id.tv_show);</div><div class="line">        ObjectAnimator animator=ObjectAnimator.ofFloat(mTvShow,&quot;rotation&quot;,0,360)</div><div class="line">                .setDuration(2000);</div><div class="line">        animator.setRepeatCount(ValueAnimator.INFINITE);</div><div class="line">        animator.start();</div><div class="line">//      animator.cancel();</div></pre></td></tr></table></figure></p>
-<p>4.线程优化：一般采用线程池，避免程序中存在大量的Thread线程池可以重用内部的线程，避免了线程的创建和销毁造所带来的性能开销，同时线程池可以控制线程池的最大并发数，避免大量的线程因抢占资源而导致阻塞现象发生。</p>
+<h5 id="内存优化："><a href="#内存优化：" class="headerlink" title="内存优化："></a>内存优化：</h5><p>1.静态变量导致的内存泄漏：在一个Activity中应用了静态变量，当这个Activity销毁时，这个变量变量无法销毁。（这种模式一般不会发生，一般都会避免使用）<br>2.单例模式导致的内存泄漏：由于单利模式的特点是其生命周期和Application的保持一致，因此Activity对象无法及时释放。<br>3.属性动画导致的内存泄漏：属性动画有一类有一类无限循环动画，如果在onDestroy()中没有停止的话，那么动画会一直播下去，尽管界面没有展现动画效果，而这个时候Activity的View持有这个动画，而View又持有Activity，最终Activity无法释放。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	mTvShow= (TextView) findViewById(R.id.tv_show);</div><div class="line">        ObjectAnimator animator=ObjectAnimator.ofFloat(mTvShow,&quot;rotation&quot;,0,360)</div><div class="line">                .setDuration(2000);</div><div class="line">        animator.setRepeatCount(ValueAnimator.INFINITE);</div><div class="line">        animator.start();</div><div class="line">//      animator.cancel();</div></pre></td></tr></table></figure></p>
+<p>4.线程优化：一般采用线程池，避免程序中存在大量的Thread线程池可以重用内部的线程，避免了线程的创建和销毁造所带来的性能开销，同时线程池可以控制线程池的最大并发数，避免大量的线程因抢占资源而导致阻塞现象发生。<br>5.非静态内部类导致的内存泄漏，如Handler,对于这种情况解决办法是将内部类写成静态内部类，在静态内部类中使用软应用/软应用持有外部类的实例。<br>6.Bitmap是一个极容易消耗内存的大胖子，减小创建出来的Bitmap的内存占用是很重要的，通常来说有下面2个措施：<br>  ● inSampleSize：缩放比例，在把图片载入内存之前，我们需要先计算出一个合适的缩放比例，避免不必要的大图载入。<br>  ● decode format：解码格式，选择ARGB_8888/RBG_565/ARGB_4444/ALPHA_8，存在很大差异。</p>
 <h5 id="响应速度的优化："><a href="#响应速度的优化：" class="headerlink" title="响应速度的优化："></a>响应速度的优化：</h5><p>响应速度的优化核心是避免主线程中做耗时操作，如果主线程中作太多的耗时操作，会导致Activity启动时黑屏现象，甚至出现ANR,而Android规定，Activity如果5秒之内无法响应屏幕触摸事件或键盘输入事件就会出现ANR,而BroadcastReceiver如果10秒之内还未执行完操作也会出现ANR。当出现ANR后，系统会在data/anr目录下创建一个traces.txt文件，通过分析这个文件可以定位出ANR的原因。</p>
 
       
@@ -444,6 +444,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/17/BitMap的高效加载/" rel="prev" title="BitMap的高效加载">
+                BitMap的高效加载 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -515,7 +519,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -523,7 +527,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -532,7 +536,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
