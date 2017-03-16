@@ -287,6 +287,143 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/16/Fragment的使用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="苦逼的猿人类">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/head.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="叫我阿龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="叫我阿龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/16/Fragment的使用/" itemprop="url">
+                  Fragment的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-16T21:15:16+08:00">
+                2017-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/16/Fragment的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/Fragment的使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/16/Fragment的使用/" class="leancloud_visitors" data-flag-title="Fragment的使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>getFragmentManager():</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Return the FragmentManager for interacting with fragments associated with this activity.</div><div class="line">意思是：返回FragmentManager与当前的Activity进行交互。</div></pre></td></tr></table></figure></p>
+<p><code>getChildFragmentManager():</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Return a private FragmentManager for placing and managing Fragments inside of this Fragment.</div><div class="line">意思是：返回一个私有FragmentManager来放置和管理这个Fragment里面的Fragments。</div></pre></td></tr></table></figure></p>
+<p><code>FragmentTransaction:</code>对Fragment的添加、隐藏、代替、删除是通过这个类进行的。<br>一般对于多个Fragment的使用，我们使用<code>hide()</code>和<code>show()</code>方法。由于<code>replace()</code>不保留Fragment的状态，加入Fragment中有<code>EditText</code>等控件时，不能保存其上的数据。<br><code>BackStack：</code>通过 <code>addToBackStack()</code> 保存当前事务，当用户按下返回键时，如果回退栈中保存有之前的事务，便会执行事务回退，而不是 finish 掉当前 Activity。</p>
+<h5 id="Fragment的通信方式"><a href="#Fragment的通信方式" class="headerlink" title="Fragment的通信方式"></a>Fragment的通信方式</h5><p>一般Fragment 与 Activity 通信存在三种情形：<br>1.Activity 操作内嵌的 Fragment，这种我们一般使用对外开放接口的形式将 Fragment 的一些对外操作传递给宿主 Activity对其进行操作。<br>        不采用这种方式：由于 Activity 持有所有内嵌的 Fragment 对象实例，所以可以直接操作 Fragment；Fragment 通过 getActivity() 方法可以获取到宿主 Activity 对象（强制转换类型即可），进而可以操作宿主 Activity；那么很自然的，获取到宿主 Activity 对象的 Fragment 便可以操作其他 Fragment 对象。<br><code>getActivity()</code>导致的一些问题：<br>第一个， Activity 的实例销毁问题。比如，Fragment 中存在类似网络请求之类的异步耗时任务，当该任务执行完毕回调 Fragment 的方法并用到宿主 Activity 对象时，很有可能宿主 Activity 对象已经销毁，从而引发 NullPointException 等异常，甚至造成程序崩溃。所以，异步回调时需要注意添加空值等判断（譬如：fragment.isAdd()，getActivity()!＝null 等），或者在 Fragment 创建实例时就通过 getActivity().getApplicationContext() 方法保存整个应用的上下文对象，再来使用；<br>第二个，内存泄漏问题。如果 Fragment 持有宿主 Activity 的引用，会导致宿主 Activity 无法回收，造成内存泄漏。所以，如果可以的话，尽量不要在 Fragment 中持有宿主 Activity 的引用。<br>2.Fragment 操作宿主 Activity，<br>3.Fragment 操作同属 Activity中的其他 Fragment。</p>
+<h5 id="Fragment-重叠问题"><a href="#Fragment-重叠问题" class="headerlink" title="Fragment 重叠问题"></a>Fragment 重叠问题</h5><h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p><a href="http://yifeng.studio/2016/12/15/android-fragment-attentions/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">Fragment的使用，及注意事项。</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/01/Dagger2介绍以及详细使用/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1837,7 +1974,7 @@ public void beginScroll(){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1854,7 +1991,7 @@ public void beginScroll(){
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
