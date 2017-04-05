@@ -287,6 +287,186 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/React-Native的打包发布/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="苦逼的猿人类">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/head.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="叫我阿龙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="叫我阿龙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/05/React-Native的打包发布/" itemprop="url">
+                  React Native的打包发布
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T13:50:36+08:00">
+                2017-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/04/05/React-Native的打包发布/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/05/React-Native的打包发布/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/05/React-Native的打包发布/" class="leancloud_visitors" data-flag-title="React Native的打包发布">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="React-Native-的调试与打包发布"><a href="#React-Native-的调试与打包发布" class="headerlink" title="React Native 的调试与打包发布"></a>React Native 的调试与打包发布</h4><p>Android手机要求所有应用都有一个数字签名才会被允许安装在用户手机上，发布到各个平台。</p>
+<ol>
+<li>生成一个签名密钥（通过命令的方式）,进入到你的项目目录下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -genkey -v -keystore my-release-key.keystore -alias 别名 RSA -keysize 2048 -validity 10000</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>生成一个叫做my-release-key.keystore的密钥库文件。<br>密钥库里应该已经生成了一个单独的密钥，有效期为10000天。–alias参数后面的别名是你将来为应用签名时所需要用到的，所以记得记录这个别名。</p>
+<ol>
+<li>在/android…/main文件下创建一个assets文件夹。</li>
+<li>在工程目录下将index.android.bundle文件下载并保存到assets文件夹下。通过这个命令</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -k &quot;http://localhost:8081/index.android.bundle&quot; &gt; android/app/src/main/assets/index.android.bundle</div></pre></td></tr></table></figure>
+<p>如果执行后显示不是内部命令，则表示未安装curl,下载curl,在环境变量中配置，在dos下输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -help</div></pre></td></tr></table></figure></p>
+<p>查看是否配置成功，成功后执行上面命令，会在assets文件夹下生成一个index.android.bundle文件。</p>
+<ol>
+<li>配置android\app文件加下build.gradle的android keystre的配置。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">signingConfigs&#123;</div><div class="line">    release &#123;</div><div class="line">        storeFile file(&quot;密钥库文件的路径&quot;)//如：ReactNative/my-release-key.keystore</div><div class="line">        storePassword &quot;密码&quot;</div><div class="line">        keyAlias &quot;别名&quot;</div><div class="line">        keyPassword &quot;密码&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> buildTypes &#123;</div><div class="line">    release &#123;</div><div class="line">        minifyEnabled false//设置为true</div><div class="line">        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;</div><div class="line">        signingConfig signingConfigs.release //添加这句话引用签名配置</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>启用代码的混淆。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">def enableProguardInReleaseBuilds = false</div></pre></td></tr></table></figure>
+<ol>
+<li>在/android/目录中执行<code>gradle assembleRelease</code> 命令，打包后android/app/build/outputs/apk文件夹下可以看到。首先要先下载gradle,在环境变量中配置，在执行上面命令。（注意gradle的版本要一致，在wrapper中的一致，在gradle-wrapper.properties查看gradle版本）</li>
+</ol>
+<ol>
+<li>将apk发布到各个市场</li>
+</ol>
+<p>错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:app:transformClassesAndResourcesWithProguardForRelease FAILED</div></pre></td></tr></table></figure></p>
+<p>由于在proguard-rules.pro的一些配置出错了。</p>
+<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><p><a href="https://reactnative.cn/docs/0.43/signed-apk-android.html#content" target="_blank" rel="external">React Native打包APK</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/03/hello-world/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1808,189 +1988,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/12/使用多说为hexo博客添加评论功能/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="苦逼的猿人类">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/head.jpeg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="叫我阿龙">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="叫我阿龙" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/12/使用多说为hexo博客添加评论功能/" itemprop="url">
-                  使用多说为hexo博客添加评论功能
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T16:43:31+08:00">
-                2016-12-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/hexo/LeanCloud/" itemprop="url" rel="index">
-                    <span itemprop="name">LeanCloud</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/12/使用多说为hexo博客添加评论功能/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/使用多说为hexo博客添加评论功能/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/12/使用多说为hexo博客添加评论功能/" class="leancloud_visitors" data-flag-title="使用多说为hexo博客添加评论功能">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="nexT主题集成了多说，只需注册多说账号，注册多说账号："><a href="#nexT主题集成了多说，只需注册多说账号，注册多说账号：" class="headerlink" title="nexT主题集成了多说，只需注册多说账号，注册多说账号："></a>nexT主题集成了多说，只需注册多说账号，注册多说账号：</h5><p>1.创建<a href="http://dev.duoshuo.com/" target="_blank" rel="external">多说</a>,安装应用，即可创建一个应用；<br>2.填写域名，首页网址等，与github地址对应；<br>3.修改Hexo配置文件_config.yml,在末尾添加:</p>
-<p></p><p><code>duoshuo_shortname: 多说名称</code></p><br>4.重新发布hexo即可成功；<br>~对于非nexT主题还要修改代码，nexT主题集成了多说评论。~<p></p>
-<h5 id="使用LeanCloud为nexT主题添加访问量："><a href="#使用LeanCloud为nexT主题添加访问量：" class="headerlink" title="使用LeanCloud为nexT主题添加访问量："></a>使用<a href="https://leancloud.cn/" target="_blank" rel="external">LeanCloud</a>为nexT主题添加访问量：</h5><p>1.登录LeanCloud,创建应用：</p>
-<p></p><p><img src="https://github.com/sunshinewei/sunshinewei.github.io/blob/master/images/image/20161212-1.png" alt="创建应用"><br></p><br>2.创建新的应用，应用名称可以随意取：<p></p>
-<p></p><p><br><img src="http://https://github.com/sunshinewei/sunshinewei.github.io/blob/master/images/image/20161212_2.png" alt="创建应用"><br></p><br>3.创建Class,在Class名称下点击创建Class,命名为Counter,选择无限制,用于记录浏览量:<p></p>
-<p></p><p><br><img src="http://https://github.com/sunshinewei/sunshinewei.github.io/blob/master/images/image/20161212_3.png" alt="创建class"><br></p><br>4.返回到设置中，点击key，获取app_id和app_key,修改nexT主题下的_config.yml文件中的:<p></p>
-<p><pre><br><code><br>leancloud_visitors:<br>  enable: true<br>  app_id: 注册应用的app_id<br>  app_key: 注册应用的app_key<br></code><br></pre><br>5.重新执行命令一下命令，完成设置：</p>
-<p><pre><code><br>hexo g<br>hexo d<br><code></code></code></pre></p>
-<ul>
-<li><h5 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h5><a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="external">为NexT主题添加文章阅读量统计功能</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2036,7 +2033,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

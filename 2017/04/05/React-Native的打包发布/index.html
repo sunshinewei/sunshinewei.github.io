@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="activity,lunchMode,intent-filter," />
+  <meta name="keywords" content="React Native," />
 
 
 
@@ -102,19 +102,31 @@
 
 
 
-<meta name="description" content="Activity的生命周期onCreate()—-&amp;gt;onStart()—-&amp;gt;onPause()—–&amp;gt;onResume()—-&amp;gt;onPause()—–&amp;gt;onStop()—-&amp;gt;onDestory()
-Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activity或者一个透明的Activity放在栈顶时，转换为Paused状态，他失去与用户交互">
+<meta name="description" content="React Native 的调试与打包发布Android手机要求所有应用都有一个数字签名才会被允许安装在用户手机上，发布到各个平台。
+
+生成一个签名密钥（通过命令的方式）,进入到你的项目目录下：1$ keytool -genkey -v -keystore my-release-key.keystore -alias 别名 RSA -keysize 2048 -validity 10000
+
+
+生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="activity的介绍">
-<meta property="og:url" content="http://yoursite.com/2016/11/04/activity的介绍/index.html">
+<meta property="og:title" content="React Native的打包发布">
+<meta property="og:url" content="http://yoursite.com/2017/04/05/React-Native的打包发布/index.html">
 <meta property="og:site_name" content="叫我阿龙">
-<meta property="og:description" content="Activity的生命周期onCreate()—-&amp;gt;onStart()—-&amp;gt;onPause()—–&amp;gt;onResume()—-&amp;gt;onPause()—–&amp;gt;onStop()—-&amp;gt;onDestory()
-Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activity或者一个透明的Activity放在栈顶时，转换为Paused状态，他失去与用户交互">
-<meta property="og:updated_time" content="2016-12-06T04:14:54.000Z">
+<meta property="og:description" content="React Native 的调试与打包发布Android手机要求所有应用都有一个数字签名才会被允许安装在用户手机上，发布到各个平台。
+
+生成一个签名密钥（通过命令的方式）,进入到你的项目目录下：1$ keytool -genkey -v -keystore my-release-key.keystore -alias 别名 RSA -keysize 2048 -validity 10000
+
+
+生">
+<meta property="og:updated_time" content="2017-04-05T05:57:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="activity的介绍">
-<meta name="twitter:description" content="Activity的生命周期onCreate()—-&amp;gt;onStart()—-&amp;gt;onPause()—–&amp;gt;onResume()—-&amp;gt;onPause()—–&amp;gt;onStop()—-&amp;gt;onDestory()
-Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activity或者一个透明的Activity放在栈顶时，转换为Paused状态，他失去与用户交互">
+<meta name="twitter:title" content="React Native的打包发布">
+<meta name="twitter:description" content="React Native 的调试与打包发布Android手机要求所有应用都有一个数字签名才会被允许安装在用户手机上，发布到各个平台。
+
+生成一个签名密钥（通过命令的方式）,进入到你的项目目录下：1$ keytool -genkey -v -keystore my-release-key.keystore -alias 别名 RSA -keysize 2048 -validity 10000
+
+
+生">
 
 
 
@@ -142,13 +154,13 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/04/activity的介绍/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/05/React-Native的打包发布/"/>
 
 
 
 
 
-  <title> activity的介绍 | 叫我阿龙 </title>
+  <title> React Native的打包发布 | 叫我阿龙 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -289,7 +301,7 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/04/activity的介绍/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/React-Native的打包发布/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="苦逼的猿人类">
@@ -313,7 +325,7 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
             
             
               
-                activity的介绍
+                React Native的打包发布
               
             
           </h1>
@@ -326,8 +338,8 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-04T11:19:40+08:00">
-                2016-11-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T13:50:36+08:00">
+                2017-04-05
               </time>
             
 
@@ -345,19 +357,8 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/activity/" itemprop="url" rel="index">
-                    <span itemprop="name">activity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/activity/intent-fillter/" itemprop="url" rel="index">
-                    <span itemprop="name">intent-fillter</span>
+                  <a href="/categories/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
                   </a>
                 </span>
 
@@ -371,8 +372,8 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/11/04/activity的介绍/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/04/activity的介绍/" itemprop="commentCount"></span>
+                <a href="/2017/04/05/React-Native的打包发布/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/05/React-Native的打包发布/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -382,7 +383,7 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
 
           
           
-             <span id="/2016/11/04/activity的介绍/" class="leancloud_visitors" data-flag-title="activity的介绍">
+             <span id="/2017/04/05/React-Native的打包发布/" class="leancloud_visitors" data-flag-title="React Native的打包发布">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,19 +408,36 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
       
 
       
-        <h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h3><p><code>onCreate()—-&gt;onStart()—-&gt;onPause()—–&gt;onResume()—-&gt;onPause()—–&gt;onStop()—-&gt;onDestory()</code></p>
-<h6 id="Paused状态"><a href="#Paused状态" class="headerlink" title="Paused状态"></a>Paused状态</h6><p>~表示当Activity失去其焦点，被一个新的非全屏的Activity或者一个透明的Activity放在栈顶时，转换为Paused状态，他失去与用户交互的能力，所有的信息成员变量还保持着。但在系统内存极低的情况下，会被系统回收掉。~</p>
-<h5 id="Activity重新创建的过程"><a href="#Activity重新创建的过程" class="headerlink" title="Activity重新创建的过程"></a>Activity重新创建的过程</h5><p>~如果系统长期处于stop形态，且系统需要更多内存或内存紧张时，系统会回收Activity,此时会将Activity状态通过onSaveInstanceState()方法保存到Bundle对象中，当你重新创建这个Activity时，保存到Bundle对象就会传递到Activity的onRestoreInstanceState()方法与onCreate()方法中。~</p>
-<h4 id="Android任务栈"><a href="#Android任务栈" class="headerlink" title="Android任务栈"></a>Android任务栈</h4><p>~在Android中，通过栈结构保存整个App的Activity,栈低的元素是整个任务1的发起者，当一个App启动后，如果当前App不存在App的任务栈，系统就会创建一个，这个App启动的所有Activity都将在这个任务栈中被管理。这个栈被称为Task,同时，一个Task中的Activity可以来自不同的App,同一个App的Activity也可能不在同一个Task中。~</p>
-<h4 id="Activity的启动模式"><a href="#Activity的启动模式" class="headerlink" title="Activity的启动模式"></a>Activity的启动模式</h4><p>1.Standard:<br>~这种模式启动一个Activity时，每次实例化。~<br>2.SignleTop:<br>~这种启动模式启动一个Activity,系统检测当前栈顶的Activity是否是要启动的Activity,如果是，不实例。这种启动模式在聊天界面，每次接收消息后显示的界面；微信的支付界面。~<br>3.SignleTask:<br>~如果以这种方式启动一个Activity,他将创建一个新的任务栈。~<br>4.SignInstance:<br>~会创建一个新的任务栈，且该任务栈中只存在这一个Activity。如果应用A创建一个MainActivity,且启动模式为此模式，如果B应用也要激活MainActivity,则不需要创建，两者应该共享。~<br><strong>SignleTask和SignleInstance中使用startActivityForResult()方法来启动另一个ActivityB,这种情况系统直接返回Activity.RESULT_CANCELED,而不再去等待返回。这种情况只能通过Intent来绑定数据。</strong></p>
-<h5 id="Intent-Flag启动模式"><a href="#Intent-Flag启动模式" class="headerlink" title="Intent Flag启动模式"></a>Intent Flag启动模式</h5><p><pre><code></code></pre></p>
-<ul>
-<li>Intent.FLAG_ACTIVITY_NEW_TASK:<br>使用一个新的Task启动一个Activity.</li>
-<li>FLAG_ACTIVITY_SIGNLE_TOP:<br>跟SignleTop启动模式一样。</li>
-<li>FLAG_ACTIVITY_CLEAR_TOP:<br>使用SignleTask启动一个Activity</li>
-<li>FLAG_ACTIVITY_NO_HISTORY:<br>~使用该模式启动一个Activity后，该Activity就会消失，不会在任务栈中~</li>
-<li>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS:<br>该标记的Acyivity不会出现在历史Activity的列表中，有时候我们不希望我们的Activity返回到历史的列表中，我们就采用次标记<br>###IntentFilter的匹配规则<br>~一个Activity可以有多个intent-filter.~<h5 id="action的匹配规则："><a href="#action的匹配规则：" class="headerlink" title="action的匹配规则："></a>action的匹配规则：</h5>~Intent中的action必须能够和过滤规则中的action匹配，就是说和action的字符串完全一致。在一个过滤规则中有多个action，只要匹配一个intent中的action能够和过滤规则中的任何一个action相同即可匹配。同时需要注意的是，action是区分大小写的。~<h5 id="category的匹配规则："><a href="#category的匹配规则：" class="headerlink" title="category的匹配规则："></a>category的匹配规则：</h5>~与actionn不同，如果intent中出现category，不管有几个category，他都必须与intent匹配。~<h5 id="data的匹配规则："><a href="#data的匹配规则：" class="headerlink" title="data的匹配规则："></a>data的匹配规则：</h5>~data的过滤规则与action的相似，但是data的结构不同于action和category。~<br>data的结构，有两部分组成，mimeType和URI两部分组成，mimeType是指媒体类型，例：image/jpeg等，URI的结构如下：<br>&#139;schem<em>&gt;:/&#139;host</em>&gt;:&#139;port&gt;/[&#139;path<em>&gt;|&#139;pathPrefix</em>&gt;|&#139;pathPattern<em>&gt;]<br>scheme:URI的模式，比如http、file、content等如果URI中没有指定scheme，则整个URI无效。<br>Host:URI的主机名，<br>port:URI的端口号。<br>path、pathPrefix、pathPattern:表示路径消息，path表示完整的路径，pathPattern:表示完整的路径消息，可以含有通配符；pathPrefix:路径的前缀消息。<br>URI默认值为file/content.<br><em>*注意，如果intent中指定了完整的data,就必须调用<code>setDataAndType</code>方法，而不能调用<code>setData</code>或<code>setType</code>,这两个方法会相互清除对方的值。</em></em></li>
-</ul>
+        <h4 id="React-Native-的调试与打包发布"><a href="#React-Native-的调试与打包发布" class="headerlink" title="React Native 的调试与打包发布"></a>React Native 的调试与打包发布</h4><p>Android手机要求所有应用都有一个数字签名才会被允许安装在用户手机上，发布到各个平台。</p>
+<ol>
+<li>生成一个签名密钥（通过命令的方式）,进入到你的项目目录下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ keytool -genkey -v -keystore my-release-key.keystore -alias 别名 RSA -keysize 2048 -validity 10000</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>生成一个叫做my-release-key.keystore的密钥库文件。<br>密钥库里应该已经生成了一个单独的密钥，有效期为10000天。–alias参数后面的别名是你将来为应用签名时所需要用到的，所以记得记录这个别名。</p>
+<ol>
+<li>在/android…/main文件下创建一个assets文件夹。</li>
+<li>在工程目录下将index.android.bundle文件下载并保存到assets文件夹下。通过这个命令</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -k &quot;http://localhost:8081/index.android.bundle&quot; &gt; android/app/src/main/assets/index.android.bundle</div></pre></td></tr></table></figure>
+<p>如果执行后显示不是内部命令，则表示未安装curl,下载curl,在环境变量中配置，在dos下输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -help</div></pre></td></tr></table></figure></p>
+<p>查看是否配置成功，成功后执行上面命令，会在assets文件夹下生成一个index.android.bundle文件。</p>
+<ol>
+<li>配置android\app文件加下build.gradle的android keystre的配置。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">signingConfigs&#123;</div><div class="line">    release &#123;</div><div class="line">        storeFile file(&quot;密钥库文件的路径&quot;)//如：ReactNative/my-release-key.keystore</div><div class="line">        storePassword &quot;密码&quot;</div><div class="line">        keyAlias &quot;别名&quot;</div><div class="line">        keyPassword &quot;密码&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> buildTypes &#123;</div><div class="line">    release &#123;</div><div class="line">        minifyEnabled false//设置为true</div><div class="line">        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;</div><div class="line">        signingConfig signingConfigs.release //添加这句话引用签名配置</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>启用代码的混淆。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">def enableProguardInReleaseBuilds = false</div></pre></td></tr></table></figure>
+<ol>
+<li>在/android/目录中执行<code>gradle assembleRelease</code> 命令，打包后android/app/build/outputs/apk文件夹下可以看到。首先要先下载gradle,在环境变量中配置，在执行上面命令。（注意gradle的版本要一致，在wrapper中的一致，在gradle-wrapper.properties查看gradle版本）</li>
+</ol>
+<ol>
+<li>将apk发布到各个市场</li>
+</ol>
+<p>错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:app:transformClassesAndResourcesWithProguardForRelease FAILED</div></pre></td></tr></table></figure></p>
+<p>由于在proguard-rules.pro的一些配置出错了。</p>
+<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><p><a href="https://reactnative.cn/docs/0.43/signed-apk-android.html#content" target="_blank" rel="external">React Native打包APK</a></p>
 
       
     </div>
@@ -443,11 +461,7 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
       
         <div class="post-tags">
           
-            <a href="/tags/activity/" rel="tag"># activity</a>
-          
-            <a href="/tags/lunchMode/" rel="tag"># lunchMode</a>
-          
-            <a href="/tags/intent-filter/" rel="tag"># intent-filter</a>
+            <a href="/tags/React-Native/" rel="tag"># React Native</a>
           
         </div>
       
@@ -456,15 +470,15 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/04/03/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/08/对于自定义View处理常用的类/" rel="prev" title="对于自定义View处理常用的类">
-                对于自定义View处理常用的类 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,8 +504,8 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/04/activity的介绍/"
-           data-title="activity的介绍" data-url="http://yoursite.com/2016/11/04/activity的介绍/">
+      <div class="ds-thread" data-thread-key="2017/04/05/React-Native的打包发布/"
+           data-title="React Native的打包发布" data-url="http://yoursite.com/2017/04/05/React-Native的打包发布/">
       </div>
     
   </div>
@@ -588,7 +602,7 @@ Paused状态~表示当Activity失去其焦点，被一个新的非全屏的Activ
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity的生命周期"><span class="nav-number">1.</span> <span class="nav-text">Activity的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Paused状态"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Paused状态</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Activity重新创建的过程"><span class="nav-number">1.0.1.</span> <span class="nav-text">Activity重新创建的过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android任务栈"><span class="nav-number">1.1.</span> <span class="nav-text">Android任务栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity的启动模式"><span class="nav-number">1.2.</span> <span class="nav-text">Activity的启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Intent-Flag启动模式"><span class="nav-number">1.2.1.</span> <span class="nav-text">Intent Flag启动模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#action的匹配规则："><span class="nav-number">1.2.2.</span> <span class="nav-text">action的匹配规则：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#category的匹配规则："><span class="nav-number">1.2.3.</span> <span class="nav-text">category的匹配规则：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#data的匹配规则："><span class="nav-number">1.2.4.</span> <span class="nav-text">data的匹配规则：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#React-Native-的调试与打包发布"><span class="nav-number">1.</span> <span class="nav-text">React Native 的调试与打包发布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文献"><span class="nav-number">2.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
