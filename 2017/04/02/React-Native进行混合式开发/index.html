@@ -114,7 +114,7 @@
 新建Android工程，minSdkVersion最小支持16。
 将React Native集成到android工程中。参考官方文档
 首先，进入到根目录中添加js到项目中，在android studio中，在Terminal中执行：123$ npm init$ npm install --save react react-native$ c">
-<meta property="og:updated_time" content="2017-04-02T03:00:54.000Z">
+<meta property="og:updated_time" content="2017-04-10T11:02:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Native进行混合式开发">
 <meta name="twitter:description" content="在已建好的Android项目引入React Native
@@ -426,10 +426,9 @@
 </ol>
 <p>修改后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;node node_modules/react-native/local-cli/cli.js start&quot;</div><div class="line">  &#125;,</div></pre></td></tr></table></figure></p>
 <ol>
-<li>添加index.android.js文件在更目录。<br>‘use strict’;</li>
+<li>添加index.android.js文件在更目录。</li>
 </ol>
-<p>import React from ‘react’;<br>import {<br>  AppRegistry,<br>  StyleSheet,<br>  Text,<br>  View<br>} from ‘react-native’;</p>
-<p>class HelloWorld extends React.Component {<br>  render() {<br>    return (<br>      <view style="{styles.container}"><br>        <text style="{styles.hello}">Hello, World</text><br>      </view><br>    )<br>  }<br>}<br>var styles = StyleSheet.create({<br>  container: {<br>    flex: 1,<br>    justifyContent: ‘center’,<br>  },<br>  hello: {<br>    fontSize: 20,<br>    textAlign: ‘center’,<br>    margin: 10,<br>  },<br>});<br>AppRegistry.registerComponent(‘HelloWorld’, () =&gt; HelloWorld);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">import React from &apos;react&apos;;</div><div class="line">import &#123;</div><div class="line">  AppRegistry,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View</div><div class="line">&#125; from &apos;react-native&apos;;</div><div class="line"></div><div class="line">class HelloWorld extends React.Component &#123;</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.hello&#125;&gt;Hello, World&lt;/Text&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: 1,</div><div class="line">    justifyContent: &apos;center&apos;,</div><div class="line">  &#125;,</div><div class="line">  hello: &#123;</div><div class="line">    fontSize: 20,</div><div class="line">    textAlign: &apos;center&apos;,</div><div class="line">    margin: 10,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line">AppRegistry.registerComponent(&apos;HelloWorld&apos;, () =&gt; HelloWorld);</div></pre></td></tr></table></figure>
 <p>到现在基本配置完成。</p>
 <ol>
 <li><p>在APP的build.gradle中添加依赖：</p>
